@@ -1,5 +1,5 @@
 Name:		plasma6-akonadi-mime
-Version:	24.01.85
+Version:	24.01.90
 Release:	1
 Summary:	Akonadi Mime Integration
 License:	GPLv2+ and LGPLv2+
@@ -37,7 +37,7 @@ BuildRequires: qt6-qttools-assistant
 %description
 Akonadi Mime Integration.
 
-%files -f libakonadi-kmime5.lang
+%files -f libakonadi-kmime6.lang
 %{_datadir}/qlogging-categories6/akonadi-mime.categories
 %{_libdir}/qt6/plugins/akonadi_serializer_mail.so
 %{_datadir}/akonadi/plugins/serializer/*
@@ -94,4 +94,4 @@ based on %{name}.
 
 %install
 %ninja_install -C build
-%find_lang libakonadi-kmime5
+%find_lang libakonadi-kmime6
