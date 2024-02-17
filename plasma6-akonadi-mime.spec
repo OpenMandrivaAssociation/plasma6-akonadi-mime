@@ -1,6 +1,9 @@
+%define git 20240217
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 Name:		plasma6-akonadi-mime
-Version:	24.01.95
-Release:	1
+Version:	24.01.96
+Release:	%{?git:0.%{git}.}1
 Summary:	Akonadi Mime Integration
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/KDE
@@ -11,7 +14,11 @@ URL:		https://www.kde.org/
 %else
 %define ftpdir stable
 %endif
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/pim/akonadi-mime/-/archive/%{gitbranch}/akonadi-mime-%{gitbranchd}.tar.bz2#/akonadi-mime-20240217.tar.bz2
+%else
 Source0:	http://download.kde.org/%{ftpdir}/release-service/%{version}/src/akonadi-mime-%{version}.tar.xz
+%endif
 
 BuildRequires:	cmake(Qt6)
 BuildRequires:	cmake(Qt6Core)
@@ -84,7 +91,7 @@ based on %{name}.
 #--------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -n akonadi-mime-%{version}
+%autosetup -p1 -n akonadi-mime-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja
