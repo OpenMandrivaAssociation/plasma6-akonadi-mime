@@ -3,7 +3,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 Name:		plasma6-akonadi-mime
 Version:	24.08.3
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 Summary:	Akonadi Mime Integration
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/KDE
